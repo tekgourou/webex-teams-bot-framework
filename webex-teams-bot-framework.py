@@ -70,13 +70,13 @@ def help_me():
     return "Sure! I can help. Below are the commands that I understand:<br/>" \
            "`help me` - I will display what I can do.<br/>" \
            "`hello` - I will display my greeting message<br/>" \
-           "`me` - Send back information one this session'<br/>"
+           "`info` - Send back information one this session'<br/>"
 
 def greetings():
     return "Hi my name is {}.<br/>" \
            "Type `Help me` to see what I can do.<br/>".format(bot_name)
 
-def me (roomType, room_title, today, timestamp, personEmail):
+def info (roomType, room_title, today, timestamp, personEmail):
         today = datetime.datetime.today()
         timestamp = today.strftime('%Y-%m-%d %H:%M:%S')
         date = datetime.date.today()
@@ -121,8 +121,8 @@ def spark_webhook():
             elif in_message in expected_messages and expected_messages[in_message] is "greetings":
                 msg = greetings()
 
-            elif in_message.startswith("me"):
-                msg = me(roomType, room_title, today, timestamp, personEmail)
+            elif in_message.startswith("info"):
+                msg = info(roomType, room_title, today, timestamp, personEmail)
 
             else:
                 msg = "Sorry, but I did not understand your request. Type `Help me` to see what I can do"
